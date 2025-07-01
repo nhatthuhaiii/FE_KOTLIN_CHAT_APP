@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "574099883961",
+    "project_id": "emerald-agility-454302-c7",
+    "storage_bucket": "emerald-agility-454302-c7.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:574099883961:android:11e54163c97298bdb0d868",
+        "android_client_info": {
+          "package_name": "com.example.kotlin_chat_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAc_hT1ww4OidSg6jGwXgoC_xYEuKf5LY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
