@@ -37,8 +37,8 @@ fun MainApp(){
     ) {
         var navControll = rememberNavController()
         val currenUser = FirebaseAuth.getInstance().currentUser
-       // val star = if(currenUser != null) "home" else "login"
-        NavHost(navController = navControll, startDestination = "login") {
+        val star = if(currenUser != null) "home" else "login"
+        NavHost(navController = navControll, startDestination = star) {
 
             composable("login") {
                 Screen_Login(navControll)
