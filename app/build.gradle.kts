@@ -3,6 +3,9 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("com.google.gms.google-services")
+    alias(libs.plugins.dagger.hilt)
+    id("kotlin-kapt")
+
 
 }
 
@@ -18,6 +21,13 @@ android {
         versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "2.0.0"
     }
 
     buildTypes {
@@ -51,12 +61,20 @@ dependencies {
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
+
+
     implementation(platform ("com.google.firebase:firebase-bom:33.16.0") )
     implementation("com.google.firebase:firebase-analytics:22.5.0")
     implementation("com.google.firebase:firebase-storage:21.0.2")
     implementation("com.google.firebase:firebase-database:21.0.0")
     implementation("com.google.firebase:firebase-auth:23.2.1")
-    implementation(libs.androidx.navigation.compose.jvmstubs)
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    kapt("com.google.dagger:hilt-compiler:2.48")
+
+
+    implementation("androidx.navigation:navigation-compose:2.8.0")
+
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

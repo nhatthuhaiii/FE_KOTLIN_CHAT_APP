@@ -13,7 +13,12 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.kotlin_chat_app.feature.auth.login.Screen_Login
 import com.example.kotlin_chat_app.feature.auth.register.Screen_Register
+import com.example.kotlin_chat_app.feature.home.Screen_Home
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.ktx.Firebase
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,16 +36,19 @@ fun MainApp(){
         modifier = Modifier.fillMaxSize()
     ) {
         var navControll = rememberNavController()
+        val currenUser = FirebaseAuth.getInstance().currentUser
+       // val star = if(currenUser != null) "home" else "login"
+        NavHost(navController = navControll, startDestination = "login") {
 
-        NavHost(navController = navControll, startDestination = "login"){
-
-            composable( "login") {
+            composable("login") {
                 Screen_Login(navControll)
             }
-            composable ("register"){
+            composable("register") {
                 Screen_Register(navControll)
             }
-        }
+            composable("home"){
+                Screen_Home(navControll)
+            }
 
-    }
+        }}
 }
