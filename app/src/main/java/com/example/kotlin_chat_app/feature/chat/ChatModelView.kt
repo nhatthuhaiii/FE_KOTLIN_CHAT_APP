@@ -1,6 +1,8 @@
 package com.example.kotlin_chat_app.feature.chat
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
+import com.example.kotlin_chat_app.FirebaseMessageService
 import com.example.kotlin_chat_app.models.Message
 import com.google.firebase.Firebase
 import com.google.firebase.auth.auth
@@ -8,6 +10,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.database
+import com.google.firebase.messaging.FirebaseMessaging
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -53,8 +56,21 @@ class ChatModelView @Inject constructor (): ViewModel(){
                     TODO("Not yet implemented")
                 }
             })
+        subscribeForNotification(channelId)
 
 
+    }
+    private fun subscribeForNotification(channedId:String){
+        FirebaseMessaging.getInstance().subscribeToTopic("group ${channedId}").addOnCompleteListener {
+        if (it.isSuccessful){
+            Log.d("ChatViewModel","Subscribed to topic: group $channedId")
+
+        } else {
+            Log.d("ChatViewModel","Failed to Subscribe to topic: group $channedId")
+
+        }
+
+        }
     }
 
 }

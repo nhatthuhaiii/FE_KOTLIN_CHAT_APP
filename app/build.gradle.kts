@@ -70,7 +70,7 @@ dependencies {
     implementation("com.google.firebase:firebase-auth:23.2.1")
     implementation("com.google.dagger:hilt-android:2.51.1")
     kapt("com.google.dagger:hilt-compiler:2.48")
-
+    implementation("com.google.firebase:firebase-messaging:24.1.2")
 
     implementation("androidx.navigation:navigation-compose:2.8.0")
 
