@@ -45,10 +45,10 @@ fun Screen_Login(navController: NavController){
     val viewModel: LogInViewModel  = hiltViewModel()
     val  UIState  = viewModel.state.collectAsState()
     var email  by remember {
-        mutableStateOf("")
+        mutableStateOf("nhat@gmai.com")
     }
     var pass by remember {
-        mutableStateOf("")
+        mutableStateOf("123456")
     }
 
     var context = LocalContext.current

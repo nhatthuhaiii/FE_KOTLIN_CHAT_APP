@@ -16,10 +16,13 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.ModalBottomSheet
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -45,6 +48,9 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.kotlin_chat_app.models.Channel
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import java.nio.file.WatchEvent
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -85,8 +91,30 @@ fun Screen_Home (navControl: NavHostController?){
                 .background(Color.Black)
         ){
             LazyColumn (){
-                item { Text("Chat Nowww", modifier = Modifier.padding(16.dp), color = Color.White,
-                    style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Black)) }
+                item {
+                    Row (
+                        Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    ) {
+
+                        Text(
+                            "Chat Nowww", modifier = Modifier.padding(16.dp), color = Color.White,
+                            style = TextStyle(fontSize = 20.sp, fontWeight = FontWeight.Black)
+                        )
+                        IconButton(onClick = {
+                            Firebase.auth.signOut()
+                            navControl?.navigate("login"){
+                                popUpTo (0)
+                            }
+
+
+
+                        }) {
+                            Icon(Icons.Default.ArrowForward, contentDescription = "")
+
+                        }
+                    }
+                }
 
                 item {
                     TextField(value = "",
@@ -153,7 +181,7 @@ fun ChannelItem(channelName:String,onClick:()->Unit){
             .padding(horizontal = 8.dp)
             .clip(RoundedCornerShape(16.dp))
             .background(Color.Gray)
-            .clickable{onClick()},
+            .clickable { onClick() },
         verticalAlignment = Alignment.CenterVertically
 
     ){

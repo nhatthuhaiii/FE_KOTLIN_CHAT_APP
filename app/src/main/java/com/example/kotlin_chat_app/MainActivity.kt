@@ -57,7 +57,7 @@ fun MainApp(){
                     type= NavType.StringType
                 }
             )){
-                val channelid= it.arguments?.getString("channelId")?:""
+                val channelid= it.arguments?.getString("channelid")?:""
 
                 Screen_Chat(navControll,channelid)
             }

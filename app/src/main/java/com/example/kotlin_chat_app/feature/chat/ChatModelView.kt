@@ -27,6 +27,7 @@ class ChatModelView @Inject constructor (): ViewModel(){
        var message = Message(
            id = db.reference.push().key ?: UUID.randomUUID().toString(),
            senderId =  Firebase.auth.currentUser?.uid?:"",
+           channelId = ChannelId,
            messageText,
            createAt = System.currentTimeMillis(),
            senderName = Firebase.auth.currentUser?.displayName?:"",
@@ -66,7 +67,7 @@ class ChatModelView @Inject constructor (): ViewModel(){
             Log.d("ChatViewModel","Subscribed to topic: group $channedId")
 
         } else {
-            Log.d("ChatViewModel","Failed to Subscribe to topic: group $channedId")
+            Log.d("ChatViewModel","Failed to Subscribed to topic: group $channedId")
 
         }
 
