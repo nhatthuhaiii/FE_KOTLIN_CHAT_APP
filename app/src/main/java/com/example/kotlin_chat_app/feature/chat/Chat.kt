@@ -123,6 +123,8 @@ fun ChatMessages(
     ){
         LazyColumn (
             modifier = Modifier.padding(bottom = 60.dp).fillMaxSize(),
+           //     reverseLayout = true,
+            verticalArrangement = Arrangement.Bottom
         ){
             items(messages) { message->
                 ChatBuble(message)
@@ -206,7 +208,7 @@ fun ChatBuble(message: Message) {
             }
 
             Column(
-                horizontalAlignment = if (isCurrentUser) Alignment.End else Alignment.Start
+                horizontalAlignment = (if (isCurrentUser) Alignment.End else Alignment.Start)
 
             ) {
 
