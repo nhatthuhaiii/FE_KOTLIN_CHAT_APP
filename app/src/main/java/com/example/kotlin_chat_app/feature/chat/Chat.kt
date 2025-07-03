@@ -76,7 +76,7 @@ fun Screen_Chat(navControll: NavController,channelId:String){
                     IconButton(onClick = {
                         navControll.popBackStack()
                     }) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = "")
+                        Icon(Icons.Default.ArrowBack, contentDescription = "", tint = Color.White)
                     }
                 }
 

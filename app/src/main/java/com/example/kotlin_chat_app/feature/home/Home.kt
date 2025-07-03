@@ -110,7 +110,7 @@ fun Screen_Home (navControl: NavHostController?){
 
 
                         }) {
-                            Icon(Icons.Default.ArrowForward, contentDescription = "")
+                            Icon(Icons.Default.ArrowForward, contentDescription = "", tint = Color.White)
 
                         }
                     }
